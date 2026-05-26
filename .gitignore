@@ -1,0 +1,108 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Datasets (large files not committed; document them in datasets/README.md instead)
+datasets/*.csv
+datasets/*.zip
+datasets/*.tar.gz
+datasets/*.parquet
+datasets/*.npy
+datasets/*.pt
+datasets/raw/
+datasets/processed/
+datasets/MNIST/
+datasets/CIFAR10/
+datasets/CIFAR100/
+!datasets/.gitkeep
+!datasets/README.md
+
+# Experiments — checkpoints, logs, runs
+experiments/**
+!experiments/.gitkeep
+projects/*/experiments/**
+!projects/*/experiments/.gitkeep
+
+# MLflow / Weights & Biases / TensorBoard
+mlruns/
+wandb/
+runs/
+tb_runs/
+lightning_logs/
+
+# Logs and outputs
+*.log
+reports/*.html
+reports/*.pdf
+!reports/.gitkeep
+
+# Generated project outputs (from `python src/train.py` runs)
+projects/*/results/*.json
+projects/*/results/*.csv
+projects/*/results/*.npy
+projects/*/results/*.pkl
+projects/*/results/*.pt
+projects/*/checkpoints/*.pt
+!projects/*/results/.gitkeep
+!projects/*/checkpoints/.gitkeep
+
+# Generated project figures (notebooks re-create these on every run)
+projects/*/figures/*.png
+projects/*/figures/*.jpg
+projects/*/figures/*.svg
+projects/*/figures/*.pdf
+!projects/*/figures/.gitkeep
+
+# Reference / source PDFs shared by the instructor (not redistributable)
+DeepLearningBook.pdf
+Instruction.pdf
+book_ML.pdf
+*.pdf
+!docs/**/*.pdf
+!reports/**/*.pdf
+
+# Claude / scratch metadata
+.claude/
+plan.md
+
+# Local-only
+*.local
