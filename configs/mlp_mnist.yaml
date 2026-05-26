@@ -1,0 +1,38 @@
+# Project 01 — MLP on MNIST (Chapter 4).
+#
+# Run from repo root:
+#   python src/train.py     --config configs/mlp_mnist.yaml
+#   python src/evaluate.py  --config configs/mlp_mnist.yaml --checkpoint experiments/mlp_mnist/checkpoints/best.pt
+#   python src/inference.py --checkpoint experiments/mlp_mnist/checkpoints/best.pt --input <png-or-dir>
+
+experiment_name: mlp_mnist
+seed: 42
+device: auto              # auto | cpu | cuda
+
+data:
+  name: mnist
+  root: datasets/mnist    # MNIST will be downloaded here on first run
+  batch_size: 128
+  num_workers: 2
+  mean: 0.1307
+  std: 0.3081
+
+model:
+  name: mlp
+  in_dim: 784             # 28 * 28
+  hidden_dim: 128
+  num_classes: 10
+  dropout: 0.0
+
+optim:
+  name: adam
+  lr: 0.001
+  weight_decay: 0.0
+
+training:
+  num_epochs: 3           # ≥ 97% val acc on MNIST in 3 epochs on CPU
+  log_every: 200          # batches between log lines
+
+output:
+  checkpoint_dir: experiments/mlp_mnist/checkpoints
+  log_dir: experiments/mlp_mnist/logs
