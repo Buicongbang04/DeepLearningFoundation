@@ -160,9 +160,7 @@ fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 plot_boundary(lr_model, X_xor, y_xor, axes[0], "Logistic regression (linear)")
 plot_boundary(mlp,      X_xor, y_xor, axes[1], "MLP with ReLU (non-linear)")
 plt.tight_layout()
-plt.savefig("xor_boundaries.png", dpi=100)
 plt.show()
-print("Saved xor_boundaries.png")
 """
         ),
         md(

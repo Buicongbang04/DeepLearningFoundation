@@ -53,6 +53,10 @@ datasets/processed/
 datasets/MNIST/
 datasets/CIFAR10/
 datasets/CIFAR100/
+datasets/mnist/
+datasets/mnist_samples/
+datasets/cifar10/
+datasets/cifar100/
 !datasets/.gitkeep
 !datasets/README.md
 
