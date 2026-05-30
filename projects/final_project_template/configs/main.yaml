@@ -1,0 +1,39 @@
+# Final project — single source of truth for the headline run.
+#
+# Copy this template, change the values, and never hand-edit the
+# checkpoint or the metrics directly. If a hyperparameter is not in
+# this file, it is not part of the experiment.
+
+experiment_name: final_<your_name_or_topic>
+seed: 42
+device: auto
+
+data:
+  # Pick from the registry in src/datasets.py:
+  #   mnist | cifar10 | cifar10_subset | fashion_mnist
+  #   synthetic_text | char_corpus
+  # Or register your custom dataset in projects/final_<your>/src/datasets.py.
+  name: <dataset-name>
+  root: datasets/<dataset-name>
+  batch_size: 64
+  num_workers: 2
+
+model:
+  # Pick from the registry in src/models.py:
+  #   mlp | small_cnn | resnet18 | lstm_text | char_transformer | conv_autoencoder
+  # Or register your custom model in projects/final_<your>/src/models.py.
+  name: <model-name>
+  # ... model-specific fields ...
+
+optim:
+  name: adamw
+  lr: 0.001
+  weight_decay: 0.0005
+
+training:
+  num_epochs: 10
+  log_every: 100
+
+output:
+  checkpoint_dir: experiments/final_<your_name_or_topic>/checkpoints
+  log_dir: experiments/final_<your_name_or_topic>/logs

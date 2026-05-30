@@ -1,0 +1,32 @@
+experiment_name: toy_transformer_charlm
+seed: 42
+device: auto
+
+data:
+  name: char_corpus
+  block_size: 64
+  val_split: 0.1
+  batch_size: 32
+  num_workers: 0
+
+model:
+  name: char_transformer
+  d_model: 64
+  num_heads: 4
+  d_ff: 256
+  num_layers: 2
+  dropout: 0.0
+
+optim:
+  name: adamw
+  lr: 0.003
+  weight_decay: 0.01
+
+training:
+  num_epochs: 10
+  log_every: 50
+  clip_grad: 1.0
+
+output:
+  checkpoint_dir: experiments/toy_transformer_charlm/checkpoints
+  log_dir: experiments/toy_transformer_charlm/logs

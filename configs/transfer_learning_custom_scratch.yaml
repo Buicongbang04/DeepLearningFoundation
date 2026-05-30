@@ -1,0 +1,37 @@
+# Project 03 — from-scratch baseline.
+# Same dataset and same architecture as transfer_learning_custom.yaml, but
+# the backbone is NOT pretrained and NOT frozen. This is what you should
+# beat with the pretrained checkpoint.
+
+experiment_name: transfer_learning_custom_scratch
+seed: 42
+device: auto
+
+data:
+  name: cifar10_subset
+  root: datasets/cifar10
+  classes: [airplane, automobile, bird, cat]
+  images_per_class_train: 200
+  images_per_class_val: 100
+  image_size: 224
+  batch_size: 32
+  num_workers: 2
+
+model:
+  name: resnet18
+  num_classes: 4
+  pretrained: false
+  freeze_backbone: false
+
+optim:
+  name: adamw
+  lr: 0.001
+  weight_decay: 0.0001
+
+training:
+  num_epochs: 3
+  log_every: 25
+
+output:
+  checkpoint_dir: experiments/transfer_learning_custom_scratch/checkpoints
+  log_dir: experiments/transfer_learning_custom_scratch/logs

@@ -1,0 +1,46 @@
+# Project 03 — Transfer learning on a small custom dataset (Chapter 9).
+#
+# The "custom" dataset is a 4-class, 200-train + 100-val subset of CIFAR-10
+# upscaled to 224x224 with ImageNet normalization — small enough to
+# *demand* transfer learning, large enough to give a stable comparison.
+#
+# Run from repo root (this is the *pretrained head-only* fine-tune):
+#   python src/train.py     --config configs/transfer_learning_custom.yaml
+#   python src/evaluate.py  --config configs/transfer_learning_custom.yaml \
+#                           --checkpoint experiments/transfer_learning_custom/checkpoints/best.pt
+#
+# For the *from-scratch* baseline, run with the sibling config:
+#   python src/train.py --config configs/transfer_learning_custom_scratch.yaml
+
+experiment_name: transfer_learning_custom
+seed: 42
+device: auto
+
+data:
+  name: cifar10_subset
+  root: datasets/cifar10
+  classes: [airplane, automobile, bird, cat]
+  images_per_class_train: 200
+  images_per_class_val: 100
+  image_size: 224
+  batch_size: 32
+  num_workers: 2
+
+model:
+  name: resnet18
+  num_classes: 4
+  pretrained: true
+  freeze_backbone: true       # head-only fine-tune (feature extraction)
+
+optim:
+  name: adamw
+  lr: 0.001
+  weight_decay: 0.0001
+
+training:
+  num_epochs: 3
+  log_every: 25
+
+output:
+  checkpoint_dir: experiments/transfer_learning_custom/checkpoints
+  log_dir: experiments/transfer_learning_custom/logs

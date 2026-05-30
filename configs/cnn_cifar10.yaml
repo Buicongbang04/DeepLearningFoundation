@@ -1,0 +1,38 @@
+# Project 02 — SmallCNN on CIFAR-10 (Chapter 8).
+#
+# Run from repo root:
+#   python src/train.py     --config configs/cnn_cifar10.yaml
+#   python src/evaluate.py  --config configs/cnn_cifar10.yaml --checkpoint experiments/cnn_cifar10/checkpoints/best.pt
+
+experiment_name: cnn_cifar10
+seed: 42
+device: auto
+
+data:
+  name: cifar10
+  root: datasets/cifar10
+  batch_size: 128
+  num_workers: 2
+  augment: true                          # random crop + horizontal flip on train
+  mean: [0.4914, 0.4822, 0.4465]
+  std:  [0.2470, 0.2435, 0.2616]
+
+model:
+  name: small_cnn
+  in_channels: 3
+  num_classes: 10
+  channels: [32, 64, 128]
+  dropout: 0.2
+
+optim:
+  name: adamw
+  lr: 0.001
+  weight_decay: 0.0005
+
+training:
+  num_epochs: 10
+  log_every: 100
+
+output:
+  checkpoint_dir: experiments/cnn_cifar10/checkpoints
+  log_dir: experiments/cnn_cifar10/logs

@@ -1,0 +1,41 @@
+# Project 06 — Autoencoder + anomaly detection on Fashion-MNIST (Chapter 14).
+#
+# The autoencoder is trained on a single "normal" class (default: class 0,
+# "T-shirt/top"). At eval time we score *every* val image by reconstruction
+# MSE. Images of other classes (anomalies) should have higher MSE than
+# in-distribution T-shirt images.
+#
+# Note: this config drives a *post-training* anomaly scoring step that
+# lives in projects/project_06_autoencoder_anomaly_detection/score.py
+# (Project 06 has its own driver because the loss/eval shape differs from
+# the classification path).
+
+experiment_name: autoencoder_fashion_mnist
+seed: 42
+device: auto
+
+data:
+  name: fashion_mnist
+  root: datasets/fashion_mnist
+  batch_size: 128
+  num_workers: 0
+  normal_class: 0          # 0 = T-shirt/top
+  anomaly_classes: [1, 5, 9]  # trousers, sandal, ankle boot
+
+model:
+  name: conv_autoencoder
+  in_channels: 1
+  latent_dim: 32
+
+optim:
+  name: adam
+  lr: 0.001
+  weight_decay: 0.0
+
+training:
+  num_epochs: 5
+  log_every: 50
+
+output:
+  checkpoint_dir: experiments/autoencoder_fashion_mnist/checkpoints
+  log_dir: experiments/autoencoder_fashion_mnist/logs

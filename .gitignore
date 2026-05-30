@@ -35,6 +35,7 @@ ENV/
 *.nbconvert.ipynb
 
 # IDE
+.pytest_cache/
 .vscode/
 .idea/
 *.swp
@@ -55,8 +56,10 @@ datasets/CIFAR10/
 datasets/CIFAR100/
 datasets/mnist/
 datasets/mnist_samples/
+datasets/mnist_samples_lab07/
 datasets/cifar10/
 datasets/cifar100/
+datasets/fashion_mnist/
 !datasets/.gitkeep
 !datasets/README.md
 
@@ -110,3 +113,4 @@ plan.md
 
 # Local-only
 *.local
+src/__pycache__/

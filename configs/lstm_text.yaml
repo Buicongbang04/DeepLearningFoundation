@@ -1,0 +1,32 @@
+experiment_name: lstm_text
+seed: 42
+device: auto
+
+data:
+  name: synthetic_text
+  examples_per_topic_train: 200
+  examples_per_topic_val: 60
+  max_len: 16
+  batch_size: 32
+  num_workers: 0
+
+model:
+  name: lstm_text
+  embed_dim: 64
+  hidden_dim: 128
+  num_layers: 1
+  dropout: 0.0
+
+optim:
+  name: adam
+  lr: 0.005
+  weight_decay: 0.0
+
+training:
+  num_epochs: 5
+  log_every: 25
+  clip_grad: 1.0
+
+output:
+  checkpoint_dir: experiments/lstm_text/checkpoints
+  log_dir: experiments/lstm_text/logs

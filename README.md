@@ -60,12 +60,15 @@ See `ROADMAP.md` for the per-chapter goals, topics, outcomes, and the repo artif
 
 ## How to Use This Repo
 
-Four top-level documents have distinct roles:
+Top-level documents and their distinct roles:
 
 - `README.md` — entry point: what the repo is, how to install, how to navigate.
 - `COURSE_OVERVIEW.md` — audience, prerequisites, design philosophy.
 - `SYLLABUS.md` — a 16-week schedule that maps chapters to weekly deliverables.
 - `ROADMAP.md` — per-chapter blueprint with goals, topics, outcomes, and repo artifacts.
+- `CONTRIBUTING.md` — guide for adding chapters, labs, projects.
+- `docs/RUBRIC.md` — final-project grading rubric (100 points).
+- `docs/REPRODUCIBILITY.md` — three commands + expected metric per project; fresh-env install path.
 
 A typical learning loop per chapter:
 
@@ -101,9 +104,37 @@ pip install -r requirements.txt
 
 # Train the first mini-project (MLP on MNIST) from CLI.
 python src/train.py     --config configs/mlp_mnist.yaml
-python src/evaluate.py  --config configs/mlp_mnist.yaml --checkpoint experiments/checkpoints/best.pt
-python src/inference.py --checkpoint experiments/checkpoints/best.pt --input sample.png
+python src/evaluate.py  --config configs/mlp_mnist.yaml \
+                        --checkpoint experiments/mlp_mnist/checkpoints/best.pt
+python src/inference.py --checkpoint experiments/mlp_mnist/checkpoints/best.pt --input sample.png
+
+# Confirm the install with the test suite.
+pytest tests/
 ```
+
+See `docs/REPRODUCIBILITY.md` for the three commands + expected metric for every shipped project.
+
+## Course content map
+
+| Chapter | Doc | Notebook / Lab | Project | Status |
+|--------:|-----|----------------|---------|:------:|
+| 0  | [`docs/00_intro_deep_learning.md`](docs/00_intro_deep_learning.md)                           | —                                                                       | —                                                              | ✓ |
+| 1  | [`docs/01_tensor_autograd_pytorch.md`](docs/01_tensor_autograd_pytorch.md)                  | [`notebooks/chapter_01_tensor_autograd.ipynb`](notebooks/chapter_01_tensor_autograd.ipynb) + [`assignments/assignment_01_autograd_basics.ipynb`](assignments/assignment_01_autograd_basics.ipynb) | —                                                              | ✓ |
+| 2–3| [`docs/02_mlp_backpropagation.md`](docs/02_mlp_backpropagation.md)                          | [`notebooks/chapter_02_mlp_from_scratch.ipynb`](notebooks/chapter_02_mlp_from_scratch.ipynb)               | —                                                              | ✓ |
+| 4  | [`docs/03_training_loop.md`](docs/03_training_loop.md)                                       | —                                                                       | [`projects/project_01_mlp_mnist/`](projects/project_01_mlp_mnist/)             | ✓ |
+| 5  | [`docs/04_activation_initialization_normalization.md`](docs/04_activation_initialization_normalization.md) | [`notebooks/chapter_04_activation_init_norm.ipynb`](notebooks/chapter_04_activation_init_norm.ipynb)         | —                                                              | ✓ |
+| 6  | [`docs/05_regularization.md`](docs/05_regularization.md)                                     | [`notebooks/chapter_05_regularization_dropout_batchnorm.ipynb`](notebooks/chapter_05_regularization_dropout_batchnorm.ipynb)         | —                                                              | ✓ |
+| 7  | [`docs/06_optimization.md`](docs/06_optimization.md)                                         | [`notebooks/chapter_06_optimization_adam_sgd_scheduler.ipynb`](notebooks/chapter_06_optimization_adam_sgd_scheduler.ipynb) | —                                                              | ✓ |
+| 8  | [`docs/07_cnn_basics.md`](docs/07_cnn_basics.md)                                             | [`notebooks/chapter_07_cnn_basics.ipynb`](notebooks/chapter_07_cnn_basics.ipynb)                                                                       | [`projects/project_02_cnn_cifar10/`](projects/project_02_cnn_cifar10/)                | ✓ |
+| 9  | [`docs/08_cnn_architectures_transfer_learning.md`](docs/08_cnn_architectures_transfer_learning.md)         | [`labs/lab_05_transfer_learning.ipynb`](labs/lab_05_transfer_learning.ipynb)                              | [`projects/project_03_transfer_learning_custom/`](projects/project_03_transfer_learning_custom/)                            | ✓ |
+| 10 | [`docs/09_sequence_models.md`](docs/09_sequence_models.md)                                   | [`notebooks/chapter_09_rnn_gru_lstm.ipynb`](notebooks/chapter_09_rnn_gru_lstm.ipynb)                       | [`projects/project_04_text_classification_lstm/`](projects/project_04_text_classification_lstm/)                              | ✓ |
+| 11 | [`docs/10_attention_mechanism.md`](docs/10_attention_mechanism.md)                          | [`notebooks/chapter_10_attention_toy.ipynb`](notebooks/chapter_10_attention_toy.ipynb)                  | —                                                              | ✓ |
+| 12 | [`docs/11_transformer_intro.md`](docs/11_transformer_intro.md)                              | [`notebooks/chapter_11_transformer_intro.ipynb`](notebooks/chapter_11_transformer_intro.ipynb)          | [`projects/project_05_transformer_toy_language_model/`](projects/project_05_transformer_toy_language_model/)                                  | ✓ |
+| 13 | [`docs/12_practical_methodology_debugging.md`](docs/12_practical_methodology_debugging.md)  | [`labs/lab_06_experiment_tracking.ipynb`](labs/lab_06_experiment_tracking.ipynb)                        | —                                                              | ✓ |
+| 14 | [`docs/13_autoencoders_representation_learning.md`](docs/13_autoencoders_representation_learning.md)       | —                                                                       | [`projects/project_06_autoencoder_anomaly_detection/`](projects/project_06_autoencoder_anomaly_detection/)                                       | ✓ |
+| 15 | [`docs/14_generative_models_intro.md`](docs/14_generative_models_intro.md)                  | [`notebooks/chapter_14_vae_gan_diffusion_intro.ipynb`](notebooks/chapter_14_vae_gan_diffusion_intro.ipynb) | —                                                              | ✓ |
+| 16 | [`docs/15_inference_and_deployment_basics.md`](docs/15_inference_and_deployment_basics.md)  | [`labs/lab_07_inference_cli.ipynb`](labs/lab_07_inference_cli.ipynb)                                   | —                                                              | ✓ |
+| 17 | [`docs/16_final_project.md`](docs/16_final_project.md) + [`docs/RUBRIC.md`](docs/RUBRIC.md)  | —                                                                       | [`projects/final_project_template/`](projects/final_project_template/)                              | ✓ |
 
 ## Repository Layout
 
